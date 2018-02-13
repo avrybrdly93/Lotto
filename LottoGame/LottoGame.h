@@ -19,3 +19,5 @@ struct LottoNumbersUser : LottoNumbers
 	void chooseMain();
 	void choosePower();
 };
+
+void displayLottoNumbers();

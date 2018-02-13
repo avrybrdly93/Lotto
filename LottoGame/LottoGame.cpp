@@ -7,16 +7,8 @@ int main()
 {
 	srand(time(NULL));
 	lottonum.LottoNumbersRand::implementValues();
-
-	for (int i = 0; i < 5; i++)
-	{
-		std::cout << lottonum.mainNumbers[i] << " ";
-	}
-
-	std::cout << lottonum.powerNumber << std::endl;
-
-	
-
+	displayLottoNumbers();
+	usernum.LottoNumbersUser::chooseMain();
 }
 
 void LottoNumbersRand::implementValues()
@@ -32,11 +24,31 @@ void LottoNumbersRand::implementValues()
 
 void LottoNumbersUser::chooseMain() 
 {
-	std::cout << "Enter your five main numbers." << std::endl;
+	std::cout << "Enter your five main numbers between 1 and 70." << std::endl;
 	for(int i = 0; i < 5; i++)
 	{
 		std::cin >> usernum.mainNumbers[i];
+		if(usernum.mainNumbers[i] > 70 || usernum.mainNumbers[i] < 1)
+		{
+			std::cout << "Sorry, enter a number between 1 and 70." << std::endl;
+			i--;
+		}
 	}
+	std::sort(usernum.LottoNumbersUser)
+	std::cout << "Here are your five numbers: ";
+	for(int i = 0; i < 5; i++)
+	{
+		std::cout << usernum.mainNumbers[i] << " ";
+		if(usernum.mainNumbers[i] == lottonum.mainNumbers[i])
+		{
+		std::cout << "Congrats! You just won the lottery!" << std::endl;
+		}
+		else
+		{
+		std::cout << "Sorry, your numbers didn't match" << std::endl;
+		}
+	}
+	
 }
 
 void LottoNumbersUser::choosePower()
@@ -45,6 +57,15 @@ void LottoNumbersUser::choosePower()
 	std::cin >> usernum.powerNumber;
 }
 
+void displayLottoNumbers()
+{
+	for (int i = 0; i < 5; i++)
+	{
+		std::cout << lottonum.mainNumbers[i] << " ";
+	}
+
+	std::cout << lottonum.powerNumber << std::endl;
+}
 
 /*
 	while(num != guess) {
